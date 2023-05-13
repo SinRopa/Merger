@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'merger';
+  constructor() {
+    document.body.className = "bg-dark text-white";
+    
+  }
 }

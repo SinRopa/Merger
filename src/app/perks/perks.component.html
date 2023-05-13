@@ -1,0 +1,57 @@
+
+<div class="d-flex justify-content-center" *ngIf="perking===true">
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Perk Time
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Inventory  <span class="right">{{InventoryPerks}}</span>
+            <button class="btn btn-sm btn-outline-success right" (click)="BuyInventoryPerk()">
+              {{perksCost.Perk_Cost_InventorySize}}
+            </button></li>
+          <li class="list-group-item">Payout Multi  <span class="right">{{PayoutPerks}}</span>
+            <button class="btn btn-sm btn-outline-success right" (click)="BuyPayoutPerk()">
+              {{perksCost.Perk_Cost_PayoutMulti}}
+            </button></li>
+          <li class="list-group-item">Tile Min Rank  <span class="right">{{TileMinPerks}}</span>
+            <button class="btn btn-sm btn-outline-success right" (click)="BuyTileMinPerk()">
+              {{perksCost.Perk_Cost_TileStartRank}}
+            </button></li>
+          <li class="list-group-item">Extra Spawn  <span class="right">{{SpawnPerks}}</span>
+            <button class="btn btn-sm btn-outline-success right" (click)="BuySpawnPerk()">
+              {{perksCost.Perk_Cost_ExtraSpawn}}
+            </button></li>
+          <li class="list-group-item">
+            <ul class="bg-dark text-light">
+            
+            Stats
+            
+            <li> 
+                <span>Cred</span>
+                <span class="right">{{Cred}} <i class="bi bi-coin"></i></span> 
+            </li>
+            <li> 
+                <span>Merges</span> 
+                <span class="right">{{Merges}} <i class="bi bi-chevron-bar-contract"></i></span>
+            </li>
+            <li> 
+                <span>Highest Tile</span>
+                <span class="right">{{HighestTile}} <i class="bi bi-trophy"></i></span>
+            </li>
+            </ul>
+        </li>
+        <li class="list-group-item"><button class="btn btn-sm btn-primary "(click)="AcceptPerks()">Accept Perks</button></li>
+        </ul>
+
+      </div>
+    
+</div>
+
+  
+  
+  
+
+  
+  
+  

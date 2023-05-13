@@ -1,0 +1,18 @@
+
+
+
+<div class="inventory" style="display:flex;flex-wrap:wrap">
+  <div id="{{tile.id}}" class="slot" *ngFor="let tile of tiles; let i = index;"  
+    [style.background]= tile.color
+    draggable="true" 
+    (dragover)="handleDragOver($event)"
+    (dragstart)="handleDragStart($event)"
+    (dragenter)="handleDragEnter($event)"
+    (dragleave)="handleDragLeave($event)"
+    (drop)="handleDrop($event)"
+    (dragend)="handleDragEnd($event)"
+    >
+    {{tile.rank}}
+  </div>
+</div>
+
