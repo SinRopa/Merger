@@ -8,7 +8,20 @@ import { BehaviorSubject, Observable, Subject, Subscription, timer } from 'rxjs'
 })
 export class GameDataServiceService {
 
+public Reg()
+{
+  let value = localStorage.getItem("reg_data");
+  if(typeof value === 'string'){
+    let regSave = JSON.parse(value);
+    regSave.merger = 1;
+    localStorage.setItem("reg_data", JSON.stringify(regSave));
+  }
+  else {
+    let newRegSave = {merger:1};
+    localStorage.setItem("reg_data", JSON.stringify(newRegSave));
+  }
 
+}
   public LoadGame()
   {
 
@@ -26,6 +39,7 @@ export class GameDataServiceService {
       if(typeof savegame.Player_Stats_HighestTile !== "undefined") this.gameData.Player_Stats_HighestTile = savegame.Player_Stats_HighestTile;
       if(typeof savegame.perking !== "undefined") this.gameData.perking = savegame.perking;
     }
+    this.Reg();
   }
 
 SaveGame()
@@ -40,10 +54,10 @@ localStorage.setItem("save_Merger", JSON.stringify(saveData));
 
     let result:PerksCost = 
     {
-      Perk_Cost_InventorySize: Math.floor(10 * Math.pow(1.5, this.gameData.Perk_Level_InventorySize+1)*100)/100,
-      Perk_Cost_PayoutMulti: Math.floor(20 * Math.pow(1.5, this.gameData.Perk_Level_PayoutMulti+1)*100)/100,
-      Perk_Cost_TileStartRank: Math.floor(200 * Math.pow(2, this.gameData.Perk_Level_TileStartRank+1)*100)/100,
-      Perk_Cost_ExtraSpawn: Math.floor(100 * Math.pow(2, this.gameData.Perk_Level_ExtraSpawn +1)*100)/100
+      Perk_Cost_InventorySize: Math.floor(5 * Math.pow(1.5, this.gameData.Perk_Level_InventorySize+1)*100)/100,
+      Perk_Cost_PayoutMulti: Math.floor(10 * Math.pow(1.5, this.gameData.Perk_Level_PayoutMulti+1)*100)/100,
+      Perk_Cost_TileStartRank: Math.floor(75 * Math.pow(2, this.gameData.Perk_Level_TileStartRank+1)*100)/100,
+      Perk_Cost_ExtraSpawn: Math.floor(75 * Math.pow(2, this.gameData.Perk_Level_ExtraSpawn +1)*100)/100
     };
     return result;
   }
@@ -201,6 +215,7 @@ localStorage.setItem("save_Merger", JSON.stringify(saveData));
 
   dropTile.rank++;
   dropTile.color = this.GetColorFromRank(dropTile.rank);
+  console.log("Merged" +dropTile.rank);
   
   let killIndex = this.gameData.Inventory.findIndex(x=> x.id.toString() == dragID);
   this.gameData.Inventory.splice(killIndex, 1);
@@ -218,16 +233,22 @@ localStorage.setItem("save_Merger", JSON.stringify(saveData));
 
 
 
-
+  previousCashOut:number=0;
   GetCurrentCashoutValue()
   {
     let result =0;
       
       this.gameData.Inventory.forEach(x=>{
-        result+= .1 * (1 + (this.gameData.Perk_Level_PayoutMulti*.1)) * Math.pow(2.1, x.rank);
+        result+= .05 * (1 + (this.gameData.Perk_Level_PayoutMulti*.05)) * Math.pow(2.05, x.rank-1);
       })
+      
       result = Math.floor(result *100)/100;
       this.cashOutChange.next(result);
+      //temp
+      let change = result - this.previousCashOut;
+      this.previousCashOut = result;
+      console.log(Math.floor(change *100)/100);
+     //end temp 
       return result;
   }
 
