@@ -233,7 +233,7 @@ localStorage.setItem("save_Merger", JSON.stringify(saveData));
 
 
 
-  previousCashOut:number=0;
+  //previousCashOut:number=0;
   GetCurrentCashoutValue()
   {
     let result =0;
@@ -245,9 +245,9 @@ localStorage.setItem("save_Merger", JSON.stringify(saveData));
       result = Math.floor(result *100)/100;
       this.cashOutChange.next(result);
       //temp
-      let change = result - this.previousCashOut;
-      this.previousCashOut = result;
-      console.log(Math.floor(change *100)/100);
+      //let change = result - this.previousCashOut;
+      //this.previousCashOut = result;
+      //console.log(Math.floor(change *100)/100);
      //end temp 
       return result;
   }
