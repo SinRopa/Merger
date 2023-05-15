@@ -55,7 +55,7 @@ localStorage.setItem("save_Merger", JSON.stringify(saveData));
     let result:PerksCost = 
     {
       Perk_Cost_InventorySize: Math.floor(5 * Math.pow(1.5, this.gameData.Perk_Level_InventorySize+1)*100)/100,
-      Perk_Cost_PayoutMulti: Math.floor(10 * Math.pow(1.5, this.gameData.Perk_Level_PayoutMulti+1)*100)/100,
+      Perk_Cost_PayoutMulti: Math.floor(4 * Math.pow(1.5, this.gameData.Perk_Level_PayoutMulti+1)*100)/100,
       Perk_Cost_TileStartRank: Math.floor(75 * Math.pow(2, this.gameData.Perk_Level_TileStartRank+1)*100)/100,
       Perk_Cost_ExtraSpawn: Math.floor(75 * Math.pow(2, this.gameData.Perk_Level_ExtraSpawn +1)*100)/100
     };
