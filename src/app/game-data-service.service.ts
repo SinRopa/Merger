@@ -54,10 +54,10 @@ localStorage.setItem("save_Merger", JSON.stringify(saveData));
 
     let result:PerksCost = 
     {
-      Perk_Cost_InventorySize: Math.floor(5 * Math.pow(1.5, this.gameData.Perk_Level_InventorySize+1)*100)/100,
-      Perk_Cost_PayoutMulti: Math.floor(4 * Math.pow(1.5, this.gameData.Perk_Level_PayoutMulti+1)*100)/100,
+      Perk_Cost_InventorySize: Math.floor(4 * Math.pow(1.4, this.gameData.Perk_Level_InventorySize+1)*100)/100,
+      Perk_Cost_PayoutMulti: Math.floor(2 * Math.pow(1.3, this.gameData.Perk_Level_PayoutMulti+1)*100)/100,
       Perk_Cost_TileStartRank: Math.floor(75 * Math.pow(2, this.gameData.Perk_Level_TileStartRank+1)*100)/100,
-      Perk_Cost_ExtraSpawn: Math.floor(75 * Math.pow(2, this.gameData.Perk_Level_ExtraSpawn +1)*100)/100
+      Perk_Cost_ExtraSpawn: Math.floor(50 * Math.pow(2, this.gameData.Perk_Level_ExtraSpawn +1)*100)/100
     };
     return result;
   }
@@ -215,7 +215,7 @@ localStorage.setItem("save_Merger", JSON.stringify(saveData));
 
   dropTile.rank++;
   dropTile.color = this.GetColorFromRank(dropTile.rank);
-  console.log("Merged" +dropTile.rank);
+  //console.log("Merged" +dropTile.rank);
   
   let killIndex = this.gameData.Inventory.findIndex(x=> x.id.toString() == dragID);
   this.gameData.Inventory.splice(killIndex, 1);
